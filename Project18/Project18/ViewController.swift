@@ -6,15 +6,27 @@
 //  Copyright © 2016 Jeffrey Eng. All rights reserved.
 //
 
+import iAd
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, ADBannerViewDelegate {
+    
+    
+    override func viewDidAppear(animated: Bool) {
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        view.addSubview(appDelegate.bannerView)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        self.canDisplayBannerAds = true
+        
     }
 
+
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
