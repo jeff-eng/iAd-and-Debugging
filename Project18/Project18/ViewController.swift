@@ -10,23 +10,23 @@ import iAd
 import UIKit
 
 class ViewController: UIViewController, ADBannerViewDelegate {
-
-    var bannerView: ADBannerView!
+    
+    
+    override func viewDidAppear(animated: Bool) {
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        view.addSubview(appDelegate.bannerView)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        bannerView = ADBannerView(adType: .Banner)
-        bannerView.translatesAutoresizingMaskIntoConstraints = false
-        bannerView.delegate = self
-        bannerView.hidden = true
-        view.addSubview(bannerView)
+        self.canDisplayBannerAds = true
         
-        let viewsDictionary = ["bannerView": bannerView]
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[bannerView]|", options: [], metrics: nil, views: viewsDictionary))
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[bannerView]|", options: [], metrics: nil, views: viewsDictionary))
     }
 
+
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
